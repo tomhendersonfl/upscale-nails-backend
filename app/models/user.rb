@@ -5,7 +5,8 @@ class User < ApplicationRecord
   ## DEFAULTS (end)
 
   ## ASSOCIATIONS (start) ====================================================
-
+  has_many :customer_appointments, class_name: "Appointment", foreign_key: "customer_user_id"
+  has_many :tech_appointments, class_name: "Appointment", foreign_key: "tech_user_id"
   ## ASSOCIATIONS (end)
 
   ## VALIDATIONS (start) =====================================================

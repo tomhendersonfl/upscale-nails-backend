@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   ## DEFAULTS (end)
 
   ## ASSOCIATIONS (start) ====================================================
-
+  has_many :appointments
   ## ASSOCIATIONS (end)
 
   ## VALIDATIONS (start) =====================================================
