@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  first_name :string
+#  last_name  :string
+#  email      :string
+#  telephone  :integer
+#  password   :string
+#  is_admin   :boolean
+#  is_tech    :boolean
+#  notes      :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class User < ApplicationRecord
 
   ## DEFAULTS (start) ========================================================
@@ -17,12 +34,17 @@ class User < ApplicationRecord
   ## VALIDATIONS (end)
 
   ## SCOPES (start) =====================================================
-  scope :admins, -> { where(is_admin: true) }
-  scope :techs, -> { where(is_tech: true) }
+  scope :admin, -> { where(is_admin: true) }
+  scope :tech, -> { where(is_tech: true) }
   ## SCOPES (end)
 
+# attribute reader
   def full_name
-    "#{first_name} #{last_name}"
+    self[:full_name]
+  end
+# attribute writer
+  def full_name=(full_name_string)
+    # self[:full_name]=
   end
 
   private

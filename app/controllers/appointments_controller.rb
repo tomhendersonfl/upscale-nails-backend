@@ -3,14 +3,19 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
-    @appointments = Appointment.all
-
-    render json: @appointments
+    if params[:user_id]
+      @appointments = Appointment.find_by_customer_user_id params[:user_id]
+    elsif params[:product_id]
+      @appointments = Appointment.find_by_product_id params[:product_id]
+    else
+      @appointments = Appointment.all
+    end
+    render json: @appointments, include: [:product, :customer_user, :tech_user]
   end
 
   # GET /appointments/1
   def show
-    render json: @appointment
+    render json: @appointment, include: [:product, :customer_user, :tech_user]
   end
 
   # POST /appointments
@@ -46,6 +51,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def appointment_params
-      params.fetch(:appointment, {})
+      params.require(:appointment).permit(:customer_user_id, :tech_user_id, :product_id, :state, :description, :appointment_start, :appointment_end)
     end
 end
