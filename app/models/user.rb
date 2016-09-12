@@ -38,15 +38,6 @@ class User < ApplicationRecord
   scope :tech, -> { where(is_tech: true) }
   ## SCOPES (end)
 
-# attribute reader
-  def full_name
-    self[:full_name]
-  end
-# attribute writer
-  def full_name=(full_name_string)
-    # self[:full_name]=
-  end
-
   private
 
   def set_defaults
