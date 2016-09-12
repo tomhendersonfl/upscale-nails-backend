@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-
     render json: @users
   end
 
@@ -15,14 +14,18 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new()
-    @user.email = params[:email]
-    @user.first_name = params[:first_name]
-    @user.last_name = params[:last_name]
-    @user.password = params[:password]
-    @user.is_admin = params[:is_admin]
-    @user.is_tech = params[:is_tech]
-    @user.notes = "hello world"
+    @user = User.new(user_params)
+    # params.reject! {|k, v| %w”controller  method blah ".include? k }
+    # @user = User.new(params.reject[])
+    # binding.pry
+    # @user = User.new()
+    # @user.email = params[:email]
+    # @user.first_name = params[:first_name]
+    # @user.last_name = params[:last_name]
+    # @user.password = params[:password]
+    # @user.is_admin = params[:is_admin]
+    # @user.is_tech = params[:is_tech]
+    # @user.notes = "hello world"
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -52,7 +55,7 @@ class UsersController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    # def user_params
-    #   params.require(:user).permit(:first_name, :last_name, :full_name, :email, :telephone, :password, :is_admin, :is_tech, :notes)
-    # end
+    def user_params
+      params.permit(:first_name, :last_name, :email, :telephone, :password, :is_admin, :is_tech, :notes, :show)
+    end
 end
