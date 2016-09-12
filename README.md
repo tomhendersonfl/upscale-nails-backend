@@ -5,3 +5,5 @@ This backend supports the following models:
 
 User:  Identifies all system users, including customers, technicians and administrators.
 Product:  Identifies products and services offered for sale to customers.
+Appointment:  A customer can make an appointment with a technician for a service (e.g., a manicure).
+Sale:  This model captures a history of product and service sales by week in units, retail dollars and cost dollars.

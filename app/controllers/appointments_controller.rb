@@ -10,12 +10,15 @@ class AppointmentsController < ApplicationController
     else
       @appointments = Appointment.all
     end
-    render json: @appointments, include: [:product, :customer_user, :tech_user]
+    # render json: @appointments, include: [:product, :customer_user, :tech_user]
   end
 
   # GET /appointments/1
   def show
-    render json: @appointment, include: [:product, :customer_user, :tech_user]
+    @appointments = []
+    @appointment = Appointment.find_by_id params[:id]
+    @appointments.push(@appointment)
+    # render json: @appointment, include: [:product, :customer_user, :tech_user]
   end
 
   # POST /appointments

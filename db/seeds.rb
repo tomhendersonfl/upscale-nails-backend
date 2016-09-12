@@ -52,6 +52,19 @@ User.find_or_create_by(id: 1003) do |u|
   u.created_at = DateTime.now
   u.updated_at = DateTime.now
 end
+User.find_or_create_by(id: 1004) do |u|
+  u.id = 1004
+  u.first_name = "Loras"
+  u.last_name = "Tyrell"
+  u.email = "flowerknight@highgarden.gov"
+  u.telephone = 1234567890
+  u.password = "welcome"
+  u.is_admin = false
+  u.is_tech = false
+  u.notes = ""
+  u.created_at = DateTime.now
+  u.updated_at = DateTime.now
+end
 
 Product.find_or_create_by(id: 1000) do |p|
   p.id = 1000
@@ -394,10 +407,106 @@ Appointment.find_or_create_by(id: 1001) do |a|
   a.id = 1001
   a.customer_user_id = 1003
   a.tech_user_id = 1001
-  a.product_id = 1002
+  a.product_id = 1003
   a.state = "pending"
   a.description = "Watch out for the crow."
   a.appointment_start = DateTime.now + 7
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1002) do |a|
+  a.id = 1002
+  a.customer_user_id = 1003
+  a.tech_user_id = 1001
+  a.product_id = 1003
+  a.state = "pending"
+  a.description = "Notoriously bad tipper."
+  a.appointment_start = DateTime.now + 7
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1003) do |a|
+  a.id = 1003
+  a.customer_user_id = 1004
+  a.tech_user_id = 1001
+  a.product_id = 1003
+  a.state = "pending"
+  a.description = "Use the coral surprise polish"
+  a.appointment_start = DateTime.now + 7
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1004) do |a|
+  a.id = 1004
+  a.customer_user_id = 1004
+  a.tech_user_id = 1001
+  a.product_id = 1004
+  a.state = "pending"
+  a.description = " "
+  a.appointment_start = DateTime.now + 3
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1005) do |a|
+  a.id = 1005
+  a.customer_user_id = 1001
+  a.tech_user_id = 1000
+  a.product_id = 1005
+  a.state = "pending"
+  a.description = "Don't cut too short"
+  a.appointment_start = DateTime.now + 7
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1006) do |a|
+  a.id = 1006
+  a.customer_user_id = 1001
+  a.tech_user_id = 1000
+  a.product_id = 1006
+  a.state = "pending"
+  a.description = "No polish, just buffing."
+  a.appointment_start = DateTime.now + 7
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1007) do |a|
+  a.id = 1007
+  a.customer_user_id = 1003
+  a.tech_user_id = 1001
+  a.product_id = 1007
+  a.state = "pending"
+  a.description = "Watch out for the crow."
+  a.appointment_start = DateTime.now + 4
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1008) do |a|
+  a.id = 1008
+  a.customer_user_id = 1004
+  a.tech_user_id = 1001
+  a.product_id = 1008
+  a.state = "pending"
+  a.description = " "
+  a.appointment_start = DateTime.now + 2
+  a.appointment_end = a.appointment_start + 60.minutes
+  a.created_at = DateTime.now
+  a.updated_at = DateTime.now
+end
+Appointment.find_or_create_by(id: 1009) do |a|
+  a.id = 1009
+  a.customer_user_id = 1002
+  a.tech_user_id = 1001
+  a.product_id = 1009
+  a.state = "pending"
+  a.description = "Watch out for the crow."
+  a.appointment_start = DateTime.now + 1
   a.appointment_end = a.appointment_start + 60.minutes
   a.created_at = DateTime.now
   a.updated_at = DateTime.now
