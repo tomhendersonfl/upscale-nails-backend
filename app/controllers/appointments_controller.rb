@@ -3,14 +3,15 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
+    @appointments = []
     if params[:user_id]
-      @appointments = Appointment.find_by_customer_user_id params[:user_id]
+      @appointment = Appointment.find_by_customer_user_id params[:user_id]
+      @appointments.push(@appointment)
     elsif params[:product_id]
       @appointments = Appointment.find_by_product_id params[:product_id]
     else
       @appointments = Appointment.all
     end
-    # render json: @appointments, include: [:product, :customer_user, :tech_user]
   end
 
   # GET /appointments/1
@@ -18,7 +19,6 @@ class AppointmentsController < ApplicationController
     @appointments = []
     @appointment = Appointment.find_by_id params[:id]
     @appointments.push(@appointment)
-    # render json: @appointment, include: [:product, :customer_user, :tech_user]
   end
 
   # POST /appointments

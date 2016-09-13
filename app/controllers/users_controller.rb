@@ -15,17 +15,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-    # params.reject! {|k, v| %w”controller  method blah ".include? k }
-    # @user = User.new(params.reject[])
-    # binding.pry
-    # @user = User.new()
-    # @user.email = params[:email]
-    # @user.first_name = params[:first_name]
-    # @user.last_name = params[:last_name]
-    # @user.password = params[:password]
-    # @user.is_admin = params[:is_admin]
-    # @user.is_tech = params[:is_tech]
-    # @user.notes = "hello world"
 
     if @user.save
       render json: @user, status: :created, location: @user
