@@ -3,12 +3,10 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
-    @appointments = []
     if params[:user_id]
-      @appointment = Appointment.find_by_customer_user_id params[:user_id]
-      @appointments.push(@appointment)
+      @appointments = Appointment.where("customer_user_id = ?", params[:user_id])
     elsif params[:product_id]
-      @appointments = Appointment.find_by_product_id params[:product_id]
+      @appointments = Appointment.where("product_id = ?", params[:product_id])
     else
       @appointments = Appointment.all
     end
@@ -16,9 +14,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1
   def show
-    @appointments = []
     @appointment = Appointment.find_by_id params[:id]
-    @appointments.push(@appointment)
   end
 
   # POST /appointments
@@ -47,12 +43,10 @@ class AppointmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_appointment
       @appointment = Appointment.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def appointment_params
       params.require(:appointment).permit(:customer_user_id, :tech_user_id, :product_id, :state, :description, :appointment_start, :appointment_end)
     end
